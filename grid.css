@@ -1,0 +1,51 @@
+html, body, .grid-container { height: 100%; margin: 2px; }
+
+.grid-container { 
+ position: relative;
+}
+
+.grid-container *:after { 
+/* content:attr(class); */
+ position: absolute;
+ top: 0;
+ left: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "Attacker Attacker Defender Defender" "Attacker-Ops Attacker-Ops Defender-Ops Defender-Ops" ". . . .";
+}
+
+.Attacker {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "Attacker-Military Attacker-Mods Attacker-Calcs" "Attacker-Military Attacker-Mods Attacker-Calcs";
+  grid-area: Attacker;
+}
+
+.Attacker-Military { grid-area: Attacker-Military; width:auto;}
+
+.Attacker-Mods { grid-area: Attacker-Mods; width:auto;}
+
+.Attacker-Calcs { grid-area: Attacker-Calcs; width:auto;}
+
+.Defender {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "Defender-Military Defender-Mods Defender-Calcs" "Defender-Military Defender-Mods Defender-Calcs";
+  grid-area: Defender;
+}
+
+.Defender-Military { grid-area: Defender-Military; }
+
+.Defender-Mods { grid-area: Defender-Mods; }
+
+.Defender-Calcs { grid-area: Defender-Calcs; }
+
+.Attacker-Ops { grid-area: Attacker-Ops; }
+
+.Defender-Ops { grid-area: Defender-Ops; }

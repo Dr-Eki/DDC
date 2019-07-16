@@ -1,0 +1,63 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 12em 1min-content 1fr 1fr;
+  grid-template-areas:
+  	"Notice Notice Notice Info Info Info"
+  	"Battle-Report Battle-Report Battle-Report Battle-Report Battle-Report Battle-Report"
+  	"Attacker-Military Attacker-Mods Attacker-Calcs Defender-Military Defender-Mods Defender-Calcs"
+  	"Attacker-Ops Attacker-Ops Attacker-Ops Defender-Ops Defender-Ops Defender-Ops"
+  	"Ops-Samples Ops-Samples Ops-Samples Ops-Samples Ops-Samples Ops-Samples";
+}
+
+.Notice { grid-area: Notice; }
+
+.Info { grid-area: Info; }
+
+.Defender-Ops { grid-area: Defender-Ops; }
+
+.Attacker-Ops { grid-area: Attacker-Ops; }
+
+.Attacker-Military { grid-area: Attacker-Military; }
+
+.Attacker-Mods { grid-area: Attacker-Mods; }
+
+.Attacker-Calcs { grid-area: Attacker-Calcs; }
+
+.Defender-Military { grid-area: Defender-Military; }
+
+.Defender-Mods { grid-area: Defender-Mods; }
+
+.Defender-Calcs { grid-area: Defender-Calcs; }
+
+.Battle-Report { grid-area: Battle-Report; }
+
+.Ops-Samples { grid-area: Ops-Samples; }
+
+.Notice
+{
+	border-right:1px solid #666;
+}
+.Battle-Report
+{
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
+}
+.Attacker-Calcs
+{
+	border-right:1px solid #666;
+}
+.Attacker-Ops
+{
+	border-top:1px solid #666;
+	border-right:1px solid #666;
+}
+.Defender-Ops
+{
+	border-top:1px solid #666;
+}
+.Ops-Samples
+{
+	margin-top:2em;
+	border-top:1px solid #666;
+}

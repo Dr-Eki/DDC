@@ -1,0 +1,73 @@
+/** GENERAL STUFF **/
+body
+{
+  background:#fff;
+  color:#222;
+}
+a:link,a:visited
+{
+  color:#00f;
+}
+a:active
+{
+  color:#00a;
+}
+
+/** BATTLE REPORT **/
+div.success
+{
+  background:#dfd;
+}
+div.bounce
+{
+  background:#fdd;
+}
+li.overwhelmed
+{
+  color:#822;
+}
+
+/** RACIAL BONUSES INPUT **/
+tr.racial td.forest
+{
+  background:#8b8;
+}
+tr.racial td.mountains
+{
+  background:#ccc;
+}
+tr.racial td.wizard_guilds
+{
+  background:#cac;
+}
+tr.racial td.prestige
+{
+  background:#ff8;
+}
+tr.racial td.wpa
+{
+  background:#4cc;
+}
+tr.racial td.guard_towers
+{
+  background:#eca;
+}
+/** TOP BOXES **/
+div.Notice
+{
+  background:#ffe;
+}
+
+div.Info
+{
+  background:#eee;
+}
+/** OPS INPUT BOXES **/
+
+input,button,textarea,select,option
+{
+  border:1px solid #888;
+  background:#eee;
+  color:#222;
+}
+
