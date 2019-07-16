@@ -206,7 +206,7 @@ if($dominion['attacker']['military']['unit3']['special'] == 1 OR $dominion['atta
 		# Grab AM from Status Screen if we have that.
 		if(($dominion['attacker']['military']['Wizards']['trained'] + $dominion['attacker']['military']['ArchMages']['trained']) > 0)
 		{
-			$dominion['attacker']['general']['WPA'] = ($dominion['attacker']['military']['Wizards']['trained'] + $dominion['attacker']['military']['ArchMages']['trained'] * 2)  / $dominion['attacker']['general']['land'];
+			$dominion['attacker']['general']['WPA'] = round(($dominion['attacker']['military']['Wizards']['trained'] + $dominion['attacker']['military']['ArchMages']['trained'] * 2)  / $dominion['attacker']['general']['land'],4);
 		}
 		elseif(isset($_POST['attacker_special_wpa']))
 		{	
