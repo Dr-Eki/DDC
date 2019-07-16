@@ -1,7 +1,0 @@
-Part 	Rating 	Invested
-Science 	+4.98% platinum production 	1,702,080
-Keep 	+16.82% max population 	4,891,140
-Towers PI 	+0.00% wizard power, -0.00% damage from spells 	0
-Forges 	+0.00% offensive power 	0
-Walls 	+4.61% defensive power 	1,857,420
-Harbor 	+0.00% food production, boat production & protection 	0
