@@ -1,5 +1,4 @@
-# DDC
- Dreki's Dominion Calculator
+## Dreki's Dominion Calculator
 
 This is an invasion calculator to supplement [OpenDominion](https://github.com/WaveHack/OpenDominion). Players use it to calculate the defensive power (DP) and offensive power (OP) of themselves or other players.
 
