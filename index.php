@@ -11,10 +11,8 @@ else
   error_reporting(0);
 }
 
-
 #error_reporting(E_ALL &  ~E_NOTICE);
 #ini_set('display_errors', 1);
-
 
 require_once('constants.php');
 require_once('units.php');
@@ -27,8 +25,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
   require_once('calculator.php');
 }
-
-
 
 ?>
 
@@ -47,9 +43,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   <link rel="preload" href="base.css">
   <link rel="preload" href="<?php echo $_COOKIE['ddc_style']; ?>.css">
 
-  <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="newgrid.css">
-  <link rel="stylesheet" href="<?php echo $_COOKIE['ddc_style']; ?>.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="stylesheet" href="css/<?php echo $_COOKIE['ddc_style']; ?>.css">
 
   <link rel="shortcut icon" type="image/png" href="images/axe.png"/>
 
