@@ -165,6 +165,7 @@ if($dominion['defender']['military']['unit3']['special'] == 1 OR $dominion['defe
 		{
 			$dominion['defender']['land']['Mountains'] = $dominion['defender']['buildings']['Home'];
 			$dominion['defender']['land']['Mountains'] += $dominion['defender']['buildings']['Ore Mine'];
+			$dominion['defender']['land']['Mountains'] += $dominion['defender']['buildings']['Gryphon Nest'];
 			$dominion['defender']['land']['Mountains'] += $dominion['defender']['buildings']['Barren'];
 			$dominion['defender']['land']['Mountains'] += $dominion['defender']['buildings']['Under Construction'];
 		}	
