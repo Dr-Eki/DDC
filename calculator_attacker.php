@@ -128,7 +128,7 @@ else
 	$dominion['attacker']['military']['unit2']['trained'] = $attacker_clearsight['unit2']['trained'];
 	$dominion['attacker']['military']['unit3']['trained'] = $attacker_clearsight['unit3']['trained'];
 	$dominion['attacker']['military']['unit4']['trained'] = $attacker_clearsight['unit4']['trained'];
-	$dominion['attacker']['military']['Wizards']['trained'] = $attacker_clearsight['Wizards ']['trained'];
+	$dominion['attacker']['military']['Wizards']['trained'] = $attacker_clearsight['Wizards']['trained'];
 	$dominion['attacker']['military']['ArchMages']['trained'] = $attacker_clearsight['ArchMages']['trained'];
 }
 
@@ -206,7 +206,7 @@ if($dominion['attacker']['military']['unit3']['special'] == 1 OR $dominion['atta
 		# Grab AM from Status Screen if we have that.
 		if(($dominion['attacker']['military']['Wizards']['trained'] + $dominion['attacker']['military']['ArchMages']['trained']) > 0)
 		{
-			$dominion['attacker']['general']['WPA'] = round(($dominion['attacker']['military']['Wizards']['trained'] + $dominion['attacker']['military']['ArchMages']['trained'] * 2)  / $dominion['attacker']['general']['land'],4);
+			$dominion['attacker']['general']['WPA'] = round(($dominion['attacker']['military']['Wizards']['trained'] + $dominion['attacker']['military']['ArchMages']['trained'] * 2)  / $dominion['attacker']['general']['land'],3);
 		}
 		elseif(isset($_POST['attacker_special_wpa']))
 		{	

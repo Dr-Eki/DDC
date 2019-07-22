@@ -124,6 +124,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
   echo '<a href="settings.php?reset=1">Reset Calculator</a>';
 
+#  echo "Wiz: " . $dominion['attacker']['military']['Wizards']['trained'];  echo "AM: " . $dominion['attacker']['military']['ArchMages']['trained'];
   echo '</p>';
 
 ?>
