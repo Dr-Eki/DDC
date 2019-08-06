@@ -172,6 +172,23 @@ if($dominion['attacker']['military']['unit3']['special'] == 1 OR $dominion['atta
 		{
 			$dominion['attacker']['military']['unit4']['op'] += 0;
 		}
+		elseif($land_ratio >= 0.75 and $land_ratio < 0.80)
+		{
+			$dominion['attacker']['military']['unit4']['op'] += 1;
+		}
+		elseif($land_ratio >= 0.80 and $land_ratio < 0.85)
+		{
+			$dominion['attacker']['military']['unit4']['op'] += 1.5;
+		}
+		elseif($land_ratio >= 0.85 and $land_ratio < 0.90)
+		{
+			$dominion['attacker']['military']['unit4']['op'] += 2;
+		}
+		elseif($land_ratio >= 0.90)
+		{
+			$dominion['attacker']['military']['unit4']['op'] += 2.5;
+		}
+		/*
 		elseif($land_ratio < 0.85)
 		{
 			$dominion['attacker']['military']['unit4']['op'] += 1;
@@ -180,6 +197,7 @@ if($dominion['attacker']['military']['unit3']['special'] == 1 OR $dominion['atta
 		{
 			$dominion['attacker']['military']['unit4']['op'] += 2;
 		}
+		*/
 	}
 	elseif($dominion['attacker']['general']['race'] == 'Troll')
 	{

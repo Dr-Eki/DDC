@@ -33,6 +33,10 @@ elseif($_GET['reset'] == 1)
 	unset($_SESSION);
 	header('Location: /ddc/');
 }
+elseif($_GET['reset'] == 'target')
+{
+	#?
+}
 else
 {
 	header('Location: /ddc/');

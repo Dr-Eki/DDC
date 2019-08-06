@@ -183,6 +183,7 @@ if($dominion['defender']['military']['unit3']['special'] == 1 OR $dominion['defe
 		{
 			$dominion['defender']['land']['Mountains'] = $dominion['defender']['buildings']['Home'];
 			$dominion['defender']['land']['Mountains'] += $dominion['defender']['buildings']['Ore Mine'];
+			$dominion['defender']['land']['Mountains'] += $dominion['defender']['buildings']['Gryphon Nest'];
 			$dominion['defender']['land']['Mountains'] += $dominion['defender']['buildings']['Barren'];
 			$dominion['defender']['land']['Mountains'] += $dominion['defender']['buildings']['Under Construction'];
 		}
@@ -228,7 +229,7 @@ if($dominion['defender']['military']['unit3']['special'] == 1 OR $dominion['defe
 	}
 	elseif($dominion['defender']['general']['race'] == 'Nox')
 	{
-		# Increase Nightshade DP based on Swamp buildings
+		# Increase Nightshade DP based on Swamp buildings (actually uses Swamp land because it includes Barren and Under Construction)
 		if(isset($_POST['defender_special_swamp_buildings']))
 		{
 			$dominion['defender']['land']['Swamp']['buildings'] = $_POST['defender_special_swamp_buildings'];
