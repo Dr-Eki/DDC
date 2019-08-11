@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <!DOCTYPE HTML>
 <html>
  <head>
-  <title>Dreki's Dominion Calculator (BETA) - Round 13</title>
+  <title>Dreki's Dominion Calculator (BETA) - Round 14</title>
   <?php if($environment !== 'local')
   {
     echo '<link href="https://fonts.googleapis.com/css?family=Karla|Ubuntu+Mono&display=swap" rel="stylesheet">';
