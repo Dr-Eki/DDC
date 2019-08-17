@@ -43,10 +43,10 @@
         $acresLost = (0.129 * $rangeMultiplier - 0.048) * $attackerLandWithRatioModifier;
     }
 
-  $acresLost = (int)max(floor($acresLost), 10);
+    $acresLost = (int)max(floor($acresLost*0.75), 10);
 
     echo '<p class="outcome"><span class="dominion_name">' . $dominion['attacker']['general']['name'] . '</span> invades <span class="dominion_name">' . $dominion['defender']['general']['name'] . '</span> successfully and conquers ' . number_format($acresLost) . ' acres. ';
-    echo '<span class="dominion_name">' . $dominion['attacker']['general']['name'] . '</span> also gains ' . number_format(floor($acresLost * 0.5)) .' for a total of ' . number_format(floor($acresLost * 1.5)) . ' acres.</p>';
+    echo '<span class="dominion_name">' . $dominion['attacker']['general']['name'] . '</span> also gains ' . number_format(floor($acresLost * 1)) .' for a total of ' . number_format(floor($acresLost * 1.5)) . ' acres.</p>';
 
   }
   else
