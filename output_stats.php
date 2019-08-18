@@ -46,7 +46,7 @@
     $acresLost = (int)max(floor($acresLost*0.75), 10);
 
     echo '<p class="outcome"><span class="dominion_name">' . $dominion['attacker']['general']['name'] . '</span> invades <span class="dominion_name">' . $dominion['defender']['general']['name'] . '</span> successfully and conquers ' . number_format($acresLost) . ' acres. ';
-    echo '<span class="dominion_name">' . $dominion['attacker']['general']['name'] . '</span> also gains ' . number_format(floor($acresLost * 1)) .' for a total of ' . number_format(floor($acresLost * 1.5)) . ' acres.</p>';
+    echo '<span class="dominion_name">' . $dominion['attacker']['general']['name'] . '</span> also gains ' . number_format(floor($acresLost * 1)) .' for a total of ' . number_format(floor($acresLost * 2)) . ' acres.</p>';
 
   }
   else

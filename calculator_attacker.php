@@ -239,6 +239,24 @@ if($dominion['attacker']['military']['unit3']['special'] == 1 OR $dominion['atta
 		$dominion['attacker']['military']['unit4']['op'] += MIN(3,0.85 * $dominion['attacker']['general']['WPA']);
 
 	}
+	elseif($dominion['attacker']['general']['race'] == 'Wood Elf')
+	{
+		# Increase Mystic and Druid DP based on Forest
+		if(isset($_POST['attacker_special_forest']))
+		{
+			$dominion['attacker']['land']['Forest'] = $_POST['attacker_special_forest'];
+		}
+		else
+		{
+			$dominion['attacker']['land']['Forest'] = $dominion['attacker']['buildings']['Home'];
+			$dominion['attacker']['land']['Forest'] += $dominion['attacker']['buildings']['Lumberyard'];
+			$dominion['attacker']['land']['Forest'] += $dominion['attacker']['buildings']['Forest Haven'];
+			$dominion['attacker']['land']['Forest'] += $dominion['attacker']['buildings']['Barren'];
+			$dominion['attacker']['land']['Forest'] += $dominion['attacker']['buildings']['Under Construction'];
+		}
+		$dominion['attacker']['military']['unit4']['op'] += 5 * ($dominion['attacker']['land']['Forest'] / $dominion['attacker']['general']['land']);
+
+	}
 	elseif($dominion['attacker']['general']['race'] == 'Orc')
 	{
 		

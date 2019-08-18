@@ -238,7 +238,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
               elseif($dominion['attacker']['general']['race'] == 'Wood Elf')
               {
                  echo '<td class="forest">Forest: </td>';
-                 echo '<td class="forest"><input type="number" name="attacker_special_wizard_guilds" value="' . $dominion['attacker']['land']['Forest'] . "\" step='1' placeholder='0'/> acres</td>"; 
+                 echo '<td class="forest"><input type="number" name="attacker_special_forest" value="' . $dominion['attacker']['land']['Forest'] . "\" step='1' placeholder='0'/> acres</td>"; 
               }
               else
               {
