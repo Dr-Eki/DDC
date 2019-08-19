@@ -478,8 +478,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
               }
               elseif($dominion['defender']['general']['race'] == 'Nox')
               {
-                 echo '<td class="forest">Swamp: </td>';
-                 echo '<td class="forest"><input type="number" name="defender_special_swamp_buildings" value="' . $dominion['defender']['land']['Forest'] . "\" step='1' placeholder='0'/> acres</td>"; 
+                 echo '<td class="swamp">Swamp: </td>';
+                 echo '<td class="swamp"><input type="number" name="defender_special_swamp_buildings" value="' . $dominion['defender']['land']['Swamp']['buildings'] . "\" step='1' placeholder='0'/> acres</td>"; 
               }
               elseif($dominion['defender']['general']['race'] == 'Troll')
               {
