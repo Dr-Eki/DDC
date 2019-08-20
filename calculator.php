@@ -376,7 +376,7 @@ if($_POST['origin'] == 'output')
 else
 {
 	$dominion['defender']['dp']['mods']['Walls'] = $dominion['defender']['castle']['Walls'];
-	$dominion['defender']['dp']['mods']['Racial'] = $scribes['races'][$dominion['attacker']['general']['race']]['dp'];
+	$dominion['defender']['dp']['mods']['Racial'] = $scribes['races'][$dominion['defender']['general']['race']]['dp'];
 	$dominion['defender']['dp']['mods']['Guard Tower'] = min(round($dominion['defender']['buildings']['Guard Tower'] / $dominion['defender']['general']['land'],4,PHP_ROUND_HALF_UP) * GUARD_TOWER_MULTIPLIER, GUARD_TOWER_MAX);
 
 
