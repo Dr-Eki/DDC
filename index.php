@@ -612,11 +612,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
   <h2>Castle</h2>
   <textarea type="text" name="attacker_castle" id="attacker_castle" class="ops"><?php echo $_POST['attacker_castle']; ?></textarea>
 
-  <h2>Barracks (returning) &mdash; Ignored</h2>
-  <textarea type="text" name="attacker_barracks_returning" id="attacker_barracks" class="ops"><?php echo $_POST['attacker_barracks_returning']; ?></textarea>
-
   <h2>Barracks (home/training) &mdash; Units in Training added if CS available</h2>
   <textarea type="text" name="attacker_barracks_home" id="attacker_barracks_home" class="ops"><?php echo $_POST['attacker_barracks_home']; ?></textarea>
+
+  <h2>Barracks (returning) &mdash; Ignored</h2>
+  <textarea type="text" name="attacker_barracks_returning" id="attacker_barracks" class="ops"><?php echo $_POST['attacker_barracks_returning']; ?></textarea>
 
   <h2>Land</h2>
   <textarea type="text" name="attacker_land" id="attacker_land" class="ops" disabled="disabled"></textarea>
@@ -647,11 +647,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
   <h2>Castle</h2>
   <textarea type="text" name="defender_castle" id="defender_castle" class="ops"><?php echo $_POST['defender_castle']; ?></textarea>
 
-  <h2>Barracks (returning)</h2>
-  <textarea type="text" name="defender_barracks_returning" id="defender_barracks_returning" class="ops"><?php echo $_POST['defender_barracks_returning']; ?></textarea>
-
   <h2>Barracks (home/training)</h2>
   <textarea type="text" name="defender_barracks_home" id="defender_barracks_home" class="ops"><?php echo $_POST['defender_barracks_home']; ?></textarea>
+
+  <h2>Barracks (returning)</h2>
+  <textarea type="text" name="defender_barracks_returning" id="defender_barracks_returning" class="ops"><?php echo $_POST['defender_barracks_returning']; ?></textarea>
 
   <h2>Land</h2>
   <textarea type="text" name="defender_land" id="defender_land" class="ops" disabled="disabled"></textarea>

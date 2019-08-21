@@ -205,7 +205,7 @@ if($dominion['defender']['military']['unit3']['special'] == 1 OR $dominion['defe
 			$dominion['defender']['land']['Forest'] += $dominion['defender']['buildings']['Barren'];
 			$dominion['defender']['land']['Forest'] += $dominion['defender']['buildings']['Under Construction'];
 		}
-		$dominion['defender']['military']['unit3']['dp'] += MIN(4,10 * ($dominion['defender']['land']['Forest'] / $dominion['defender']['general']['land']));
+		$dominion['defender']['military']['unit3']['dp'] += MIN(4,5 * ($dominion['defender']['land']['Forest'] / $dominion['defender']['general']['land']));
 
 	}
 	elseif($dominion['defender']['general']['race'] == 'Wood Elf')
