@@ -320,6 +320,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
           <td>Mods:</td>
           <td><?php echo $dominion['attacker']['op']['modifier']*100; ?>%</td>
         </tr>
+        <?php
+        if($dominion['attacker']['morale_debuff'] < 1)
+        {
+          echo '<tr>';
+          echo '<td>Morale: </td>';
+          echo '<td>-' . (1-$dominion['attacker']['morale_debuff'])*100 . '%</td>';
+          echo '<td>';
+        }
+        ?>
         <tr>
           <td>Net OP:</td>
           <td><?php echo number_format($dominion['attacker']['op']['net'],2); ?> OP</td>
@@ -339,8 +348,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
   echo "Raw OP:\t" . number_format($dominion['attacker']['op']['raw'],2) . "\n";
   echo "OP mods:\t". $dominion['attacker']['op']['modifier']*100 . "%\n";
   echo "Net OP:\t" . number_format($dominion['attacker']['op']['net'],2) . "\n";
+  if($dominion['attacker']['morale_debuff'] < 1)
+  {
+    echo "Morale:\t-".(1-$dominion['defender']['morale_debuff'])*100 . "%\n";
+  }
   echo "Temples:\t-" . $dominion['attacker']['op']['mods']['Temple']*100 . "% DP mods```";
-#  echo "OPA:\t" . number_format($dominion['attacker']['op']['net']/$dominion['attacker']['general']['land'],2) . "```";
   ?>
   </textarea>
   <button onclick='copyOutput("copy_output_attacker")' class="copy_output attacker" title="Copy attacker to clipboard for easy pasting, including ``` for Discord formatting.">Copy Attacker</button>

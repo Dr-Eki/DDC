@@ -420,12 +420,6 @@ $dominion['defender']['dp']['modifier'] += $dominion['defender']['dp']['mods']['
 $dominion['defender']['dp']['modifier'] += $dominion['defender']['dp']['mods']['Racial'];
 $dominion['defender']['dp']['modifier'] += $dominion['defender']['dp']['mods']['spell']['dp'];
 
-# Apply morale
-#$dominion['defender']['dp']['modifier'] = $dominion['defender']['dp']['modifier'] * clamp((0.9 + ($dominion['defender']['general']['morale'] / 1000)), 0.9, 1.0);
-
-# Calculate mod DP
-#$dominion['defender']['dp']['mod'] = $dominion['defender']['dp']['raw'] * (1 + $dominion['defender']['dp']['modifier']);
-
 # Get OP
 require_once('calculator_attacker.php');
 
@@ -454,6 +448,3 @@ $dominion['defender']['morale_debuff'] = clamp((0.9 + ($dominion['defender']['ge
 
 # Apply morale
 $dominion['defender']['dp']['net'] = $dominion['defender']['dp']['net'] * $dominion['defender']['morale_debuff'];
-
-
-

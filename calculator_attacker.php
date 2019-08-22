@@ -405,10 +405,11 @@ $dominion['attacker']['op']['modifier'] += $dominion['attacker']['op']['mods']['
 $dominion['attacker']['op']['modifier'] += $dominion['attacker']['op']['mods']['spell']['op'];
 $dominion['attacker']['op']['modifier'] += $dominion['attacker']['general']['prestige'] / 10000;
 
-# Apply morale
-
-$dominion['attacker']['op']['modifier'] = $dominion['attacker']['op']['modifier'] * clamp((0.9 + ($dominion['attacker']['general']['morale'] / 1000)), 0.9, 1.0);
-
 # Calculate mod OP
 $dominion['attacker']['op']['net'] = $dominion['attacker']['op']['raw'] * (1 + $dominion['attacker']['op']['modifier']);
 
+# Morale debuff
+$dominion['attacker']['morale_debuff'] = clamp((0.9 + ($dominion['attacker']['general']['morale'] / 1000)), 0.9, 1.0);
+
+# Apply morale debuff
+$dominion['attacker']['op']['net'] = $dominion['attacker']['op']['net'] * $dominion['attacker']['morale_debuff'];
