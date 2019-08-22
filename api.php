@@ -13,3 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     header('Content-Type: application/json');
     echo json_encode($dominion, JSON_PARTIAL_OUTPUT_ON_ERROR);
 }
+else
+{
+    header('location: ./');
+}
