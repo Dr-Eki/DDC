@@ -421,7 +421,7 @@ $dominion['defender']['dp']['modifier'] += $dominion['defender']['dp']['mods']['
 $dominion['defender']['dp']['modifier'] += $dominion['defender']['dp']['mods']['spell']['dp'];
 
 # Apply morale
-$dominion['defender']['dp']['modifier'] = $dominion['defender']['dp']['modifier'] * clamp((0.9 + ($dominion['defender']['general']['morale'] / 1000)), 0.9, 1.0);
+#$dominion['defender']['dp']['modifier'] = $dominion['defender']['dp']['modifier'] * clamp((0.9 + ($dominion['defender']['general']['morale'] / 1000)), 0.9, 1.0);
 
 # Calculate mod DP
 #$dominion['defender']['dp']['mod'] = $dominion['defender']['dp']['raw'] * (1 + $dominion['defender']['dp']['modifier']);
@@ -448,3 +448,12 @@ if($dominion['attacker']['op']['mods']['spell']['name'] == 'Unholy Ghost')
 
 # Calculate net DP
 $dominion['defender']['dp']['net'] = $dominion['defender']['dp']['raw'] * (1 + $dominion['defender']['dp']['modifier_net']);
+
+# Morale debuff
+$dominion['defender']['morale_debuff'] = clamp((0.9 + ($dominion['defender']['general']['morale'] / 1000)), 0.9, 1.0);
+
+# Apply morale
+$dominion['defender']['dp']['net'] = $dominion['defender']['dp']['net'] * $dominion['defender']['morale_debuff'];
+
+
+
