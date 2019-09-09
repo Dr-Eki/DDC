@@ -318,7 +318,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
         </tr>
         <tr>
           <td>Mods:</td>
-          <td><?php echo $dominion['attacker']['op']['modifier']*100; ?>%</td>
+          <td><?php echo round($dominion['attacker']['op']['modifier']*100, ROUNDING_PRECISION); ?>%</td>
         </tr>
         <?php
         if($dominion['attacker']['morale_debuff'] < 1)
@@ -335,7 +335,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
         </tr>
         <tr>
           <td>Temples:</td>
-          <td>-<?php echo $dominion['attacker']['op']['mods']['Temple']*100; ?>% DP mods</td>
+          <td>-<?php echo round($dominion['attacker']['op']['mods']['Temple']*100, ROUNDING_PRECISION); ?>% DP mods</td>
         </tr>
       </tbody>
     </table>
@@ -346,13 +346,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
   echo "Race:\t" . $dominion['attacker']['general']['race'] . "\n";
   echo "Size:\t" . $dominion['attacker']['general']['land'] . "\n";
   echo "Raw OP:\t" . number_format($dominion['attacker']['op']['raw'],2) . "\n";
-  echo "OP mods:\t". $dominion['attacker']['op']['modifier']*100 . "%\n";
+  echo "OP mods:\t". round($dominion['attacker']['op']['modifier']*100,ROUNDING_PRECISION) . "%\n";
   echo "Net OP:\t" . number_format($dominion['attacker']['op']['net'],2) . "\n";
   if($dominion['attacker']['morale_debuff'] < 1)
   {
     echo "Morale:\t-".(1-$dominion['defender']['morale_debuff'])*100 . "%\n";
   }
-  echo "Temples:\t-" . $dominion['attacker']['op']['mods']['Temple']*100 . "% DP mods```";
+  echo "Temples:\t-" . round($dominion['attacker']['op']['mods']['Temple']*100,ROUNDING_PRECISION) . "% DP mods```";
   ?>
   </textarea>
   <button onclick='copyOutput("copy_output_attacker")' class="copy_output attacker" title="Copy attacker to clipboard for easy pasting, including ``` for Discord formatting.">Copy Attacker</button>
@@ -575,17 +575,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
       </tr>
       <tr>
         <td>Mods:</td>
-        <td><?php echo $dominion['defender']['dp']['modifier']*100; ?>%<?php # Only show if attacker has temple mods.
+        <td><?php echo round($dominion['defender']['dp']['modifier']*100,ROUNDING_PRECISION); ?>%<?php # Only show if attacker has temple mods.
                                                                             if($dominion['attacker']['op']['mods']['Temple'] > 0)
                                                                             {
-                                                                              echo '&nbsp;(-'.$dominion['attacker']['op']['mods']['Temple']*100 . '%)';
+                                                                              echo '&nbsp;(-'.round($dominion['attacker']['op']['mods']['Temple']*100,ROUNDING_PRECISION) . '%)';
                                                                             }
                                                                       ?></td>
       </tr>
       <tr>
         <td>Net mods:</td>
         <td><?php
-                  echo $dominion['defender']['dp']['modifier_net']*100 . '%';
+                  echo round($dominion['defender']['dp']['modifier_net']*100,ROUNDING_PRECISION) . '%';
 
                   if($dominion['defender']['morale_debuff'] < 1)
                   {
@@ -605,8 +605,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
   echo "Race:\t" . $dominion['defender']['general']['race'] . "\n";
   echo "Size:\t" . $dominion['defender']['general']['land'] . "\n";
   echo "Raw DP:\t" . number_format($dominion['defender']['dp']['raw'],2) . "\n";
-  echo "DP mods:\t". $dominion['defender']['dp']['modifier']*100 . "%\n";
-  echo "Net mods:\t". $dominion['defender']['dp']['modifier_net']*100 . "%\n";
+  echo "DP mods:\t". round($dominion['defender']['dp']['modifier']*100,ROUNDING_PRECISION) . "%\n";
+  echo "Net mods:\t". round($dominion['defender']['dp']['modifier_net']*100, ROUNDING_PRECISION) . "%\n";
   if($dominion['defender']['morale_debuff'] < 1)
   {
     echo "Morale:\t-".(1-$dominion['defender']['morale_debuff'])*100 . "%\n";

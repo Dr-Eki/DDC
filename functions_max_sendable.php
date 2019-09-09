@@ -36,6 +36,7 @@ function calculate_max_sendable($attacker, $defender)
 		'Lizardfolk'=>1,
 		'Icekin'=>1,
 		'Goblin'=>1,
+
 		# Method 3
 		'Troll'=>3,
 
@@ -47,7 +48,8 @@ function calculate_max_sendable($attacker, $defender)
 		'Nox'=>5,
 		'Orc'=>5,
 		'Sylvan'=>5,
-		'Merfolk'=>5
+		'Merfolk'=>5,
+		'Firewalker'=>5
 	);
 
 	## METHOD 1
@@ -60,7 +62,7 @@ function calculate_max_sendable($attacker, $defender)
 
 		$attacker['military']['unit1']['attacking'] = $attacker['military']['unit1']['available'];
 		$attacker['military']['unit2']['attacking'] = 0; # Won't be changed.
-		$attacker['military']['unit3']['attacking'] = 0;
+		$attacker['military']['unit3']['attacking'] = 0; 
 		$attacker['military']['unit4']['attacking'] = $attacker['military']['unit4']['available'];
 
 		$defender['military']['draftees']['defending'] = $defender['military']['draftees']['trained'];
@@ -276,14 +278,14 @@ function calculate_max_sendable($attacker, $defender)
 
 		$attacker['military']['unit1']['attacking'] = $attacker['military']['unit1']['available'];
 		$attacker['military']['unit2']['attacking'] = 0; # Won't be changed.
-		$attacker['military']['unit3']['attacking'] = 0; # Won't be changed.
-		$attacker['military']['unit4']['attacking'] = 0;
+		$attacker['military']['unit3']['attacking'] = 0; # Won't be changed. Unit3 has no OP.
+		$attacker['military']['unit4']['attacking'] = 0; # Start at zero and increment.
 
 		$defender['military']['draftees']['defending'] = $defender['military']['draftees']['trained'];
 		$defender['military']['unit1']['defending'] = 0; # Won't be changed.
 		$defender['military']['unit2']['defending'] = $defender['military']['unit2']['available'];
-		$defender['military']['unit3']['defending'] = 0; # Won't be changed.
-		$defender['military']['unit4']['defending'] = $attacker['military']['unit4']['available'];
+		$defender['military']['unit3']['defending'] = $attacker['military']['unit3']['available'];
+		$defender['military']['unit4']['defending'] = $attacker['military']['unit4']['available']; # Start at max and decrease.
 
 		# Calculate OP and DP once before we loop.
 		$op = $attacker['military']['unit1']['attacking'] * $attacker['military']['unit1']['op'];
@@ -301,14 +303,14 @@ function calculate_max_sendable($attacker, $defender)
 
 		while($military['ratio'] <= $max_ratio)
 		{
-			if($attacker['military']['unit4']['attacking'] == $defender['military']['unit4']['available'] OR $defender['military']['unit4']['defending'] == 0)
+			if($attacker['military']['unit4']['defending'] == $defender['military']['unit4']['available'] OR $defender['military']['unit4']['defending'] == 0)
 			{
 				break;
 			}
 
 			$military['sub_method'] = '1';
 			$military['iteration']++;
-			# Add one Unit4 (Smasher) to attacking and remove one Unit4 (Smasher) from defending
+			# Add one Unit4 (ie. Salamander) to attacking and remove one Unit4 (ie. Salamander) from defending
 			$attacker['military']['unit4']['attacking']++;
 			$defender['military']['unit4']['defending']--;
 

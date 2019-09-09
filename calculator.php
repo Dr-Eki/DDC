@@ -168,7 +168,7 @@ if($dominion['defender']['military']['unit3']['special'] == 1 OR $dominion['defe
 			$dominion['defender']['land']['Mountains'] += $dominion['defender']['buildings']['Gryphon Nest'];
 			$dominion['defender']['land']['Mountains'] += $dominion['defender']['buildings']['Barren'];
 			$dominion['defender']['land']['Mountains'] += $dominion['defender']['buildings']['Under Construction'];
-		}	
+		}
 		$dominion['defender']['military']['unit3']['dp'] += MIN(3,5 * ($dominion['defender']['land']['Mountains'] / $dominion['defender']['general']['land']));
 
 	}
@@ -297,7 +297,7 @@ if($dominion['defender']['barracks_info'] == TRUE)
 		$dominion['defender']['military']['unit3']['available'] = min($dominion['defender']['military']['unit3']['trained'] - $dominion['defender']['military']['unit3']['returning'] * 0.85, $dominion['defender']['military']['unit3']['home'] / 0.85);
 		$dominion['defender']['military']['unit4']['available'] = min($dominion['defender']['military']['unit4']['trained'] - $dominion['defender']['military']['unit4']['returning'] * 0.85, $dominion['defender']['military']['unit4']['home'] / 0.85);
 #	}
-	
+
 	# Calculate the raw DP
 	$dominion['defender']['draftee_dp'] = $dominion['defender']['military']['draftees']['available'] * 1;
 	$dominion['defender']['military']['unit1']['available_dp'] = $dominion['defender']['military']['unit1']['available'] * $dominion['defender']['military']['unit1']['dp'];
@@ -339,7 +339,7 @@ else
 	$dominion['defender']['military']['unit1']['available_dp'] = $dominion['defender']['military']['unit1']['available'] * $dominion['defender']['military']['unit1']['dp'];
 	$dominion['defender']['military']['unit2']['available_dp'] = $dominion['defender']['military']['unit2']['available'] * $dominion['defender']['military']['unit2']['dp'];
 	$dominion['defender']['military']['unit3']['available_dp'] = $dominion['defender']['military']['unit3']['available'] * $dominion['defender']['military']['unit3']['dp'];
-	$dominion['defender']['military']['unit4']['available_dp'] = $dominion['defender']['military']['unit4']['available'] * $dominion['defender']['military']['unit4']['dp'];	
+	$dominion['defender']['military']['unit4']['available_dp'] = $dominion['defender']['military']['unit4']['available'] * $dominion['defender']['military']['unit4']['dp'];
 }
 
 
@@ -366,7 +366,10 @@ if($_POST['origin'] == 'output')
 	# Set GT count
 	$dominion['defender']['buildings']['Guard Tower'] = $_POST['defender_mods_guard_towers'];
 
-	$dominion['defender']['dp']['mods']['Guard Tower'] = min(round($dominion['defender']['buildings']['Guard Tower'] / $dominion['defender']['general']['land'],4,PHP_ROUND_HALF_UP) * GUARD_TOWER_MULTIPLIER, GUARD_TOWER_MAX);
+#	$dominion['defender']['dp']['mods']['Guard Tower'] = min(round($dominion['defender']['buildings']['Guard Tower'] / $dominion['defender']['general']['land'],4,PHP_ROUND_HALF_UP) * GUARD_TOWER_MULTIPLIER, GUARD_TOWER_MAX);
+
+	$dominion['defender']['dp']['mods']['Guard Tower'] = min((($dominion['defender']['buildings']['Guard Tower'] / $dominion['defender']['general']['land']) * GUARD_TOWER_MULTIPLIER), GUARD_TOWER_MAX);
+
 
 	$dominion['defender']['general']['morale'] = intval($_POST['defender_mods_morale']);
 
@@ -377,8 +380,7 @@ else
 {
 	$dominion['defender']['dp']['mods']['Walls'] = $dominion['defender']['castle']['Walls'];
 	$dominion['defender']['dp']['mods']['Racial'] = $scribes['races'][$dominion['defender']['general']['race']]['dp'];
-	$dominion['defender']['dp']['mods']['Guard Tower'] = min(round($dominion['defender']['buildings']['Guard Tower'] / $dominion['defender']['general']['land'],4,PHP_ROUND_HALF_UP) * GUARD_TOWER_MULTIPLIER, GUARD_TOWER_MAX);
-
+	$dominion['defender']['dp']['mods']['Guard Tower'] = min((($dominion['defender']['buildings']['Guard Tower'] / $dominion['defender']['general']['land']) * GUARD_TOWER_MULTIPLIER), GUARD_TOWER_MAX);
 
 	$dominion['defender']['display']['Walls'] = $dominion['defender']['castle']['Walls']*100;
 	$dominion['defender']['display']['Racial'] = $dominion['defender']['dp']['mods']['Racial']*100;
@@ -434,11 +436,13 @@ else
 }
 
 # Remove draftees for DE.
-
 if($dominion['attacker']['op']['mods']['spell']['name'] == 'Unholy Ghost')
 {
 	$dominion['defender']['dp']['raw'] -= $dominion['defender']['draftee_dp'];
 }
+
+# Apply land DP.
+$dominion['defender']['dp']['raw'] = max($dominion['defender']['dp']['raw'], $dominion['defender']['general']['land'] * 1.5);
 
 # Calculate net DP
 $dominion['defender']['dp']['net'] = $dominion['defender']['dp']['raw'] * (1 + $dominion['defender']['dp']['modifier_net']);

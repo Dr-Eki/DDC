@@ -328,8 +328,12 @@ if($_POST['origin'] == 'output')
 	$dominion['attacker']['buildings']['Gryphon Nest'] = $_POST['attacker_mods_gryphon_nest'];
 	$dominion['attacker']['buildings']['Temple'] = $_POST['attacker_mods_temple'];
 
-	$dominion['attacker']['op']['mods']['Gryphon Nest'] = min(round($dominion['attacker']['buildings']['Gryphon Nest'] / $dominion['attacker']['general']['land'],4,PHP_ROUND_HALF_UP) * GRYPHON_NEST_MULTIPLIER, GRYPHON_NEST_MAX);
-	$dominion['attacker']['op']['mods']['Temple'] = min(round($dominion['attacker']['buildings']['Temple'] / $dominion['attacker']['general']['land'],4,PHP_ROUND_HALF_UP) * TEMPLE_MULTIPLIER, TEMPLE_MAX);
+#	$dominion['attacker']['op']['mods']['Gryphon Nest'] = min(round($dominion['attacker']['buildings']['Gryphon Nest'] / $dominion['attacker']['general']['land'],4,PHP_ROUND_HALF_UP) * GRYPHON_NEST_MULTIPLIER, GRYPHON_NEST_MAX);
+#	$dominion['attacker']['op']['mods']['Temple'] = min(round($dominion['attacker']['buildings']['Temple'] / $dominion['attacker']['general']['land'],4,PHP_ROUND_HALF_UP) * TEMPLE_MULTIPLIER, TEMPLE_MAX);
+
+	$dominion['attacker']['op']['mods']['Gryphon Nest'] = min((($dominion['attacker']['buildings']['Gryphon Nest'] / $dominion['attacker']['general']['land']) * GRYPHON_NEST_MULTIPLIER), GRYPHON_NEST_MAX);
+	$dominion['attacker']['op']['mods']['Temple'] = min((($dominion['attacker']['buildings']['Temple'] / $dominion['attacker']['general']['land']) * TEMPLE_MULTIPLIER), TEMPLE_MAX);
+
 
 	$dominion['attacker']['general']['prestige'] = $_POST['attacker_mods_prestige'];
 	$dominion['attacker']['general']['morale'] = intval($_POST['attacker_mods_morale']);
@@ -342,8 +346,8 @@ else
 	$dominion['attacker']['op']['mods']['Forges'] = $dominion['attacker']['castle']['Forges'];
 	$dominion['attacker']['op']['mods']['Racial'] = $scribes['races'][$dominion['attacker']['general']['race']]['op'];
 
-	$dominion['attacker']['op']['mods']['Gryphon Nest'] = min(round($dominion['attacker']['buildings']['Gryphon Nest'] / $dominion['attacker']['general']['land'],4,PHP_ROUND_HALF_UP) * GRYPHON_NEST_MULTIPLIER, GRYPHON_NEST_MAX);
-	$dominion['attacker']['op']['mods']['Temple'] = min(round($dominion['attacker']['buildings']['Temple'] / $dominion['attacker']['general']['land'],4,PHP_ROUND_HALF_UP) * TEMPLE_MULTIPLIER, TEMPLE_MAX);
+	$dominion['attacker']['op']['mods']['Gryphon Nest'] = min((($dominion['attacker']['buildings']['Gryphon Nest'] / $dominion['attacker']['general']['land']) * GRYPHON_NEST_MULTIPLIER), GRYPHON_NEST_MAX);
+	$dominion['attacker']['op']['mods']['Temple'] = min((($dominion['attacker']['buildings']['Temple'] / $dominion['attacker']['general']['land']) * TEMPLE_MULTIPLIER), TEMPLE_MAX);
 
 	$dominion['attacker']['display']['Forges'] = $dominion['attacker']['castle']['Forges'] * 100;
 	$dominion['attacker']['display']['Racial'] = $dominion['attacker']['op']['mods']['Racial'] * 100;

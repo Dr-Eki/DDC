@@ -122,8 +122,8 @@
   if($range >= 75 and $invasion_success === TRUE)
   {
     $prestige_gain = floor($dominion['defender']['general']['prestige'] * 0.05 + 20);
-    $prestige_loss = floor($dominion['defender']['general']['prestige'] * 0.05);   
-    echo '<tr>';   
+    $prestige_loss = floor($dominion['defender']['general']['prestige'] * 0.05);
+    echo '<tr>';
     echo '<td>Attacker prestige gain: </td><td>' . $prestige_gain . '</td>';
     echo '</tr>';
     echo '<tr>';
