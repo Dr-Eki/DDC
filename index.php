@@ -14,12 +14,36 @@ else
 #error_reporting(E_ALL &  ~E_NOTICE);
 #ini_set('display_errors', 1);
 
-require_once('constants.php');
-require_once('units.php');
-require_once('races.php');
-require_once('spells.php');
-require_once('functions.php');
-require_once('functions_op_center.php');
+require('constants.php');
+require('units.php');
+require('races.php');
+require('spells.php');
+require('functions.php');
+require('functions_op_center.php');
+
+if(isset($_POST['defender_op_center']))
+{
+#  echo '<pre>';
+#  print_r(parse_op_center($_POST['defender_op_center']));
+#  echo '</pre>';
+#  die();
+}
+
+# Stylesheet
+if(!isset($_COOKIE['ddc_style']))
+{
+  $_COOKIE['ddc_style'] = 'dark';
+}
+
+if($_COOKIE['ddc_style'] == 'dark')
+{
+  $new_style = 'light';
+}
+elseif($_COOKIE['ddc_style'] == 'light')
+{
+  $new_style = 'dark';
+}
+
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -72,6 +96,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
 <h1>Known Issues / Bugs:</h1>
 <ul>
+  <li>Kobold not properply supported.</li>
   <li>Basher only gets +1 DP if you click Update (not Process Ops).</li>
   <li>All barren is assumed to be home land type for land-dependent races.</li>
   <li>Remember to update racial OP/DP bonuses if you manually switch races.</li>
@@ -95,18 +120,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <?php
 
   echo '<p>';
-
-  if($_COOKIE['ddc_style'] == 'light' or !isset($_COOKIE['ddc_style']))
-  {
-    $new_style = 'dark';
-  }
-  else
-  {
-    $new_style = 'light';
-  }
-
   echo '<a href="settings.php?style='. $new_style . '" title="Switch stylesheet">Change to ' . ucfirst($new_style) . ' Mode</a>';
-
   echo ' | ';
 
   if($_COOKIE['ddc_experimental'] == 'disable' or !isset($_COOKIE['ddc_experimental']))
@@ -141,7 +155,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
 </div>
 
 <div class="Attacker-Military">
-  
+
     <table class="military">
       <thead>
         <tr>
@@ -207,7 +221,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
                                                                         }
                                                                         else
                                                                         {
-                                                                          echo '100'; 
+                                                                          echo '100';
                                                                         }
                                                                         ?>" step='1' placeholder='100' min='0' max='100' />%</td>
       </tr>
@@ -215,7 +229,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
         <td>Prestige: </td>
         <td><input type="number" name="attacker_mods_prestige" value="<?php echo $dominion['attacker']['general']['prestige']; ?>" step='1' placeholder='0' min='0'/></td>
       </tr>
-      <?php 
+      <?php
         if($dominion['attacker']['military']['has_special'] === TRUE)
         {
             echo '<tr class="racial">';
@@ -223,22 +237,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
               if($dominion['attacker']['general']['race'] == 'Orc')
               {
                  echo '<td class="guard_towers">Target Guard Towers: </td>';
-                 echo '<td class="guard_towers"><input type="number" name="defender_special_guard_towers" value="' . $dominion['defender']['buildings']['Guard Tower'] . "\" step='1' placeholder='0' disabled='disabled' title='Guard Towers are taken from Defender. Change Guard Towers there to be reflected here.'/> acres</td>"; 
+                 echo '<td class="guard_towers"><input type="number" name="defender_special_guard_towers" value="' . $dominion['defender']['buildings']['Guard Tower'] . "\" step='1' placeholder='0' disabled='disabled' title='Guard Towers are taken from Defender. Change Guard Towers there to be reflected here.'/> acres</td>";
               }
               elseif($dominion['attacker']['general']['race'] == 'Dark Elf')
               {
                  echo '<td class="wizard_guilds">Wizard Guilds: </td>';
-                 echo '<td class="wizard_guilds"><input type="number" name="attacker_special_wizard_guilds" value="' . $dominion['attacker']['buildings']['Wizard Guild'] . "\" step='1' placeholder='0'/> acres</td>"; 
+                 echo '<td class="wizard_guilds"><input type="number" name="attacker_special_wizard_guilds" value="' . $dominion['attacker']['buildings']['Wizard Guild'] . "\" step='1' placeholder='0'/> acres</td>";
               }
               elseif($dominion['attacker']['general']['race'] == 'Icekin')
               {
                  echo '<td class=" ">WPA: </td>';
-                 echo '<td class="wpa"><input type="number" name="attacker_special_wpa" value="' . $dominion['attacker']['general']['WPA'] . "\" step='0.001' placeholder='0.000' min='0'/></td>"; 
+                 echo '<td class="wpa"><input type="number" name="attacker_special_wpa" value="' . $dominion['attacker']['general']['WPA'] . "\" step='0.001' placeholder='0.000' min='0'/></td>";
               }
               elseif($dominion['attacker']['general']['race'] == 'Wood Elf')
               {
                  echo '<td class="forest">Forest: </td>';
-                 echo '<td class="forest"><input type="number" name="attacker_special_forest" value="' . $dominion['attacker']['land']['Forest'] . "\" step='1' placeholder='0'/> acres</td>"; 
+                 echo '<td class="forest"><input type="number" name="attacker_special_forest" value="' . $dominion['attacker']['land']['Forest'] . "\" step='1' placeholder='0'/> acres</td>";
               }
               else
               {
@@ -256,7 +270,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
   <h3>Spell</h3>
   <select name="attacker_spell" id="attacker_spell">
     <option value="none">None</option>
-    <?php 
+    <?php
 
       foreach($scribes['spells'] as $spell)
       {
@@ -421,7 +435,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
   </table>
 
   <input type="submit" class="submit" value="Update">
-  
+
 </div>
 
 <div class="Defender-Mods">
@@ -449,11 +463,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
                                                                         }
                                                                         else
                                                                         {
-                                                                          echo '100'; 
+                                                                          echo '100';
                                                                         }
                                                                         ?>" step='1' placeholder='100' min='0' max='100' />%</td>
       </tr>
-      <?php 
+      <?php
         if($dominion['defender']['military']['has_special'] === TRUE)
         {
             echo '<tr class="racial">';
@@ -461,37 +475,37 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
               if($dominion['defender']['general']['race'] == 'Orc')
               {
                  echo '<td class="prestige">Prestige: </td>';
-                 echo '<td class="prestige"><input type="number" name="defender_special_prestige" value="' . $dominion['defender']['general']['prestige'] . "\" step='1' placeholder='0'/></td>"; 
+                 echo '<td class="prestige"><input type="number" name="defender_special_prestige" value="' . $dominion['defender']['general']['prestige'] . "\" step='1' placeholder='0'/></td>";
               }
               elseif($dominion['defender']['general']['race'] == 'Dark Elf')
               {
                  echo '<td class="wizard_guilds">Wizard Guilds: </td>';
-                 echo '<td class="wizard_guilds"><input type="number" name="defender_special_wizard_guilds" value="' . $dominion['defender']['buildings']['Wizard Guild'] . "\" step='1' placeholder='0'/> acres</td>"; 
+                 echo '<td class="wizard_guilds"><input type="number" name="defender_special_wizard_guilds" value="' . $dominion['defender']['buildings']['Wizard Guild'] . "\" step='1' placeholder='0'/> acres</td>";
               }
               elseif($dominion['defender']['general']['race'] == 'Icekin')
               {
                  echo '<td class="mountains">Mountains: </td>';
-                 echo '<td class="mountains"><input type="number" name="defender_special_mountains" value="' . $dominion['defender']['land']['Mountains'] . "\" step='1' placeholder='0'/> acres</td>"; 
+                 echo '<td class="mountains"><input type="number" name="defender_special_mountains" value="' . $dominion['defender']['land']['Mountains'] . "\" step='1' placeholder='0'/> acres</td>";
               }
               elseif($dominion['defender']['general']['race'] == 'Gnome')
               {
                  echo '<td class="mountains">Mountains: </td>';
-                 echo '<td class="mountains"><input type="number" name="defender_special_mountains" value="' . $dominion['defender']['land']['Mountains'] . "\" step='1' placeholder='0'/> acres</td>"; 
+                 echo '<td class="mountains"><input type="number" name="defender_special_mountains" value="' . $dominion['defender']['land']['Mountains'] . "\" step='1' placeholder='0'/> acres</td>";
               }
               elseif($dominion['defender']['general']['race'] == 'Sylvan')
               {
                  echo '<td class="forest">Forest: </td>';
-                 echo '<td class="forest"><input type="number" name="defender_special_forest" value="' . $dominion['defender']['land']['Forest'] . "\" step='1' placeholder='0'/> acres</td>"; 
+                 echo '<td class="forest"><input type="number" name="defender_special_forest" value="' . $dominion['defender']['land']['Forest'] . "\" step='1' placeholder='0'/> acres</td>";
               }
               elseif($dominion['defender']['general']['race'] == 'Wood Elf')
               {
                  echo '<td class="forest">Forest: </td>';
-                 echo '<td class="forest"><input type="number" name="defender_special_forest" value="' . $dominion['defender']['land']['Forest'] . "\" step='1' placeholder='0'/> acres</td>"; 
+                 echo '<td class="forest"><input type="number" name="defender_special_forest" value="' . $dominion['defender']['land']['Forest'] . "\" step='1' placeholder='0'/> acres</td>";
               }
               elseif($dominion['defender']['general']['race'] == 'Nox')
               {
                  echo '<td class="swamp">Swamp: </td>';
-                 echo '<td class="swamp"><input type="number" name="defender_special_swamp_buildings" value="' . $dominion['defender']['land']['Swamp']['buildings'] . "\" step='1' placeholder='0'/> acres</td>"; 
+                 echo '<td class="swamp"><input type="number" name="defender_special_swamp_buildings" value="' . $dominion['defender']['land']['Swamp']['buildings'] . "\" step='1' placeholder='0'/> acres</td>";
               }
               elseif($dominion['defender']['general']['race'] == 'Troll')
               {
@@ -507,7 +521,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
                 echo '<td>ERROR?</td>';
               }
 
-
             echo '</tr>';
           }
         ?>
@@ -516,7 +529,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
   <h3>Spell</h3>
   <select name="defender_spell" id="defender_spell">
     <option value="none">None</option>
-    <?php 
+    <?php
 
       foreach($scribes['spells'] as $spell)
       {
@@ -621,35 +634,30 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
 
 <div class="Attacker-Ops">
   <form action="./" method="post" id="ops" name="ops">
-  <input type="hidden" name="origin" value="ops" />   
-  
+  <input type="hidden" name="origin" value="ops" />
+
   <h1>Attacker Ops</h1>
 
-  <h2>Clear Sight or Status Screen</h2>
+  <h2>Ops Center</h2>
+  <textarea type="text" name="attacker_op_center" id="attacker_op_center" class="ops"><?php echo $_POST['attacker_op_center']; ?></textarea>
+
+  <h2>Clear Sight or Status Screen (DEPRECATED)</h2>
   <textarea type="text" name="attacker_clearsight" id="attacker_clearsight" class="ops"><?php echo $_POST['attacker_clearsight']; ?></textarea>
 
-  <h2>Survey</h2>
+  <h2>Survey (DEPRECATED)</h2>
   <textarea type="text" name="attacker_survey" id="attacker_survey" class="ops"><?php echo $_POST['attacker_survey']; ?></textarea>
 
-  <h2>Castle</h2>
+  <h2>Castle (DEPRECATED)</h2>
   <textarea type="text" name="attacker_castle" id="attacker_castle" class="ops"><?php echo $_POST['attacker_castle']; ?></textarea>
 
-  <h2>Barracks (home/training) &mdash; Units in Training added if CS available</h2>
+  <h2>Barracks (home/training) &mdash; Units in Training added if CS available (DEPRECATED)</h2>
   <textarea type="text" name="attacker_barracks_home" id="attacker_barracks_home" class="ops"><?php echo $_POST['attacker_barracks_home']; ?></textarea>
 
-  <h2>Barracks (returning) &mdash; Ignored</h2>
+  <h2>Barracks (returning) &mdash; Ignored (DEPRECATED)</h2>
   <textarea type="text" name="attacker_barracks_returning" id="attacker_barracks" class="ops"><?php echo $_POST['attacker_barracks_returning']; ?></textarea>
 
-  <h2>Land</h2>
+  <h2>Land (DEPRECATED)</h2>
   <textarea type="text" name="attacker_land" id="attacker_land" class="ops" disabled="disabled"></textarea>
-
-  <?php 
-    if($_COOKIE['ddc_experimental'] == 'enable')
-    {
-      echo '<h2>Ops Center (experimental, may not work)</h2>';
-      echo '<textarea type="text" name="attacker_op_center" id="attacker_op_center" class="ops">'.$_POST['attacker_op_center'].'</textarea>';    
-    }
-  ?>
 
   <input type="hidden" name="origin" value="attacker-ops"/>
   <p>&nbsp;</p>
@@ -660,31 +668,27 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
 <div class="Defender-Ops">
   <h1>Defender Ops</h1>
 
-  <h2>Clear Sight or Status Screen</h2>
+  <h2>Ops Center</h2>
+  <textarea type="text" name="defender_op_center" id="defender_op_center" class="ops"><?php echo $_POST['defender_op_center']; ?></textarea>
+
+  <h2>Clear Sight or Status Screen (DEPRECATED)</h2>
   <textarea type="text" name="defender_clearsight" id="defender_clearsight" class="ops"><?php echo $_POST['defender_clearsight']; ?></textarea>
 
-  <h2>Survey</h2>
+  <h2>Survey (DEPRECATED)</h2>
   <textarea type="text" name="defender_survey" id="defender_survey" class="ops"><?php echo $_POST['defender_survey']; ?></textarea>
 
-  <h2>Castle</h2>
+  <h2>Castle (DEPRECATED)</h2>
   <textarea type="text" name="defender_castle" id="defender_castle" class="ops"><?php echo $_POST['defender_castle']; ?></textarea>
 
-  <h2>Barracks (home/training)</h2>
+  <h2>Barracks (home/training) (DEPRECATED)</h2>
   <textarea type="text" name="defender_barracks_home" id="defender_barracks_home" class="ops"><?php echo $_POST['defender_barracks_home']; ?></textarea>
 
-  <h2>Barracks (returning)</h2>
+  <h2>Barracks (returning) (DEPRECATED)</h2>
   <textarea type="text" name="defender_barracks_returning" id="defender_barracks_returning" class="ops"><?php echo $_POST['defender_barracks_returning']; ?></textarea>
 
-  <h2>Land</h2>
+  <h2>Land (DEPRECATED)</h2>
   <textarea type="text" name="defender_land" id="defender_land" class="ops" disabled="disabled"></textarea>
 
-  <?php 
-    if($_COOKIE['ddc_experimental'] == 'enable')
-    {
-      echo '<h2>Ops Center (experimental, may not work)</h2>';
-      echo '<textarea type="text" name="defender_op_center" id="defender_op_center" class="ops">'.$_POST['defender_op_center'].'</textarea>';    
-    }
-  ?>
 
   <input type="hidden" name="origin" value="defender-ops"/>
   <p>&nbsp;</p>
@@ -753,16 +757,16 @@ if($environment == 'local')
 ?>
 <section class="cookies">
 <h1>Cookie and Privacy</h1>
-<p>This website does not by default use cookies but by interacting with it, cookies may be used. Thes cookies expire after 30 days. Changing a setting resets the 30-day counter.</p>
+<p>This website uses cookies to store your preferences (stylesheet and enable/disable experimental features).</p>
+<p>The cookies expire after 30 days. Changing a setting resets the 30-day counter.</p>
+<p>You can use your browser's settings to remove cookies before the 30 days are over. See your browser's manual for details.</p>
 <p>No personal data is collected. Aside from normal server logs, no data is stored on the web server.</p>
-<p>The following cookies may be used:</p>
+<p>The following cookies are used:</p>
 <ul>
   <li>"ddc_style": a value of "dark" or "light" used to select a style sheet.</li>
   <li>"ddc_experimental": a value of "enable" or "disable" used to determine whether to show experimental features.</li>
 </ul>
-<p><a href="settings.php?delete_cookies=1">You can delete all cookies set by this website by clicking this link.</a></p>
-<p>Deleting cookies will remove any settings.</p>
-</section> 
+</section>
 
 </div>
 </body>

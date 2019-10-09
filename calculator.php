@@ -14,92 +14,122 @@ $dominion['defender']['ops']['barracks_home'] = $_POST['defender_barracks_home']
 $dominion['defender']['ops']['land'] = $_POST['defender_land'];
 
 // Parse Op Center
-$ops = parse_op_center($_POST['defender_op_center']);
-
-#echo '<pre>';print_r($ops); echo '</pre>';
-
-// Clear Sight for DEFENDER
-$defender_clearsight = parse_clear_sight($_POST['defender_clearsight']);
-#echo '<pre>';print_r($defender_clearsight);echo '</pre>';
-
-if(isset($defender_clearsight['race']))
+if(isset($_POST['defender_op_center']))
 {
-	$dominion['defender']['clearsight_info'] = TRUE;
+	$oc = parse_op_center($_POST['defender_op_center']);
+
+	$dominion['defender']['general']['name'] = $oc['clearsight']['dominion'];
+	$dominion['defender']['general']['ruler'] = $oc['clearsight']['ruler'];
+	$dominion['defender']['general']['race'] =  ucwords($oc['clearsight']['race']);
+	$dominion['defender']['general']['land'] = $oc['clearsight']['land'];
+	$dominion['defender']['general']['peasants'] = $oc['clearsight']['peasants'];
+	$dominion['defender']['general']['prestige'] = $oc['clearsight']['prestige'];
+	$dominion['defender']['general']['morale'] = $oc['clearsight']['morale'];
+
+	# Prepare the military.
+	$dominion['defender']['military'] = $scribes['military'][$dominion['defender']['general']['race']];
+
+	$dominion['defender']['military']['unit1']['returning'] = $oc['military']['unit1']['returning'];
+	$dominion['defender']['military']['unit2']['returning'] = $oc['military']['unit2']['returning'];
+	$dominion['defender']['military']['unit3']['returning'] = $oc['military']['unit3']['returning'];
+	$dominion['defender']['military']['unit4']['returning'] = $oc['military']['unit4']['returning'];
+
+	$dominion['defender']['military']['unit1']['home'] = $oc['military']['unit1']['home'];
+	$dominion['defender']['military']['unit2']['home'] = $oc['military']['unit2']['home'];
+	$dominion['defender']['military']['unit3']['home'] = $oc['military']['unit3']['home'];
+	$dominion['defender']['military']['unit4']['home'] = $oc['military']['unit4']['home'];
+
+	$dominion['defender']['military']['unit1']['training'] = $oc['military']['unit1']['training'];
+	$dominion['defender']['military']['unit2']['training'] = $oc['military']['unit2']['training'];
+	$dominion['defender']['military']['unit3']['training'] = $oc['military']['unit3']['training'];
+	$dominion['defender']['military']['unit4']['training'] = $oc['military']['unit4']['training'];
+
+	$dominion['defender']['military']['draftees']['trained'] = 	$oc['clearsight']['draftees'];
+	$dominion['defender']['military']['unit1']['trained'] = $oc['military']['unit1']['trained'];
+	$dominion['defender']['military']['unit2']['trained'] = $oc['military']['unit2']['trained'];
+	$dominion['defender']['military']['unit3']['trained'] = $oc['military']['unit3']['trained'];
+	$dominion['defender']['military']['unit4']['trained'] = $oc['military']['unit4']['trained'];
+
+	$dominion['defender']['buildings'] = $oc['buildings'];
+	$dominion['defender']['castle'] = $oc['castle'];
+
 }
-
-$dominion['defender']['general']['name'] = $defender_clearsight['name'];
-$dominion['defender']['general']['ruler'] = $defender_clearsight['ruler'];
-$dominion['defender']['general']['race'] =  $defender_clearsight['race'];
-$dominion['defender']['general']['land'] = $defender_clearsight['land'];
-$dominion['defender']['general']['peasants'] = $defender_clearsight['peasants'];
-$dominion['defender']['general']['prestige'] = $defender_clearsight['prestige'];
-$dominion['defender']['general']['morale'] = $defender_clearsight['morale'];
-
-# Overwrite race and land if set manually.
-if($_POST['origin'] == 'output')
+else
 {
-	if(isset($_POST['defender_race']))
+	// Clear Sight for DEFENDER
+	$defender_clearsight = parse_clear_sight($_POST['defender_clearsight']);
+
+	if(isset($defender_clearsight['race']))
 	{
-		$dominion['defender']['general']['race'] = $_POST['defender_race'];
+		$dominion['defender']['clearsight_info'] = TRUE;
 	}
 
-	if(is_numeric($_POST['defender_land']) and $_POST['defender_land'] > 0)
+	$dominion['defender']['general']['name'] = $defender_clearsight['name'];
+	$dominion['defender']['general']['ruler'] = $defender_clearsight['ruler'];
+	$dominion['defender']['general']['race'] =  $defender_clearsight['race'];
+	$dominion['defender']['general']['land'] = $defender_clearsight['land'];
+	$dominion['defender']['general']['peasants'] = $defender_clearsight['peasants'];
+	$dominion['defender']['general']['prestige'] = $defender_clearsight['prestige'];
+	$dominion['defender']['general']['morale'] = $defender_clearsight['morale'];
+
+	# Prepare the military.
+	$dominion['defender']['military'] = $scribes['military'][$dominion['defender']['general']['race']];
+
+	// Survey
+	$dominion['defender']['buildings'] = parse_survey($_POST['defender_survey'], $dominion['defender']['general']['land']);
+
+	// Castle
+	$dominion['defender']['castle'] = parse_castle($_POST['defender_castle']);
+
+	// Barracks (returning)
+	$defender_barracks = parse_barracks($_POST['defender_barracks_returning'], $_POST['defender_barracks_home'], $dominion['defender']['general']['race']);
+
+	$dominion['defender']['military']['unit1']['returning'] = $defender_barracks['unit1']['returning'];
+	$dominion['defender']['military']['unit2']['returning'] = $defender_barracks['unit2']['returning'];
+	$dominion['defender']['military']['unit3']['returning'] = $defender_barracks['unit3']['returning'];
+	$dominion['defender']['military']['unit4']['returning'] = $defender_barracks['unit4']['returning'];
+
+	$dominion['defender']['military']['unit1']['home'] = $defender_barracks['unit1']['home'];
+	$dominion['defender']['military']['unit2']['home'] = $defender_barracks['unit2']['home'];
+	$dominion['defender']['military']['unit3']['home'] = $defender_barracks['unit3']['home'];
+	$dominion['defender']['military']['unit4']['home'] = $defender_barracks['unit4']['home'];
+
+	$dominion['defender']['military']['unit1']['training'] = $defender_barracks['unit1']['training'];
+	$dominion['defender']['military']['unit2']['training'] = $defender_barracks['unit2']['training'];
+	$dominion['defender']['military']['unit3']['training'] = $defender_barracks['unit3']['training'];
+	$dominion['defender']['military']['unit4']['training'] = $defender_barracks['unit4']['training'];
+
+	$dominion['defender']['military']['draftees']['trained'] = 	$defender_clearsight['draftees']['trained'];
+	$dominion['defender']['military']['unit1']['trained'] = $defender_clearsight['unit1']['trained'];
+	$dominion['defender']['military']['unit2']['trained'] = $defender_clearsight['unit2']['trained'];
+	$dominion['defender']['military']['unit3']['trained'] = $defender_clearsight['unit3']['trained'];
+	$dominion['defender']['military']['unit4']['trained'] = $defender_clearsight['unit4']['trained'];
+
+	# Do we have BS info?
+
+	if(
+		$dominion['defender']['military']['unit1']['home'] > 0
+		OR $dominion['defender']['military']['unit2']['home'] > 0
+		OR $dominion['defender']['military']['unit3']['home'] > 0
+		OR $dominion['defender']['military']['unit4']['home'] > 0
+		OR $dominion['defender']['military']['unit4']['returning'] > 0
+		OR $dominion['defender']['military']['unit4']['returning'] > 0
+		OR $dominion['defender']['military']['unit4']['returning'] > 0
+		OR $dominion['defender']['military']['unit4']['returning'] > 0
+
+		OR $_POST['defender_military_unit1_returning'] > 0
+		OR $_POST['defender_military_unit2_returning'] > 0
+		OR $_POST['defender_military_unit3_returning'] > 0
+		OR $_POST['defender_military_unit4_returning'] > 0
+		OR $_POST['defender_military_unit1_at_home'] > 0
+		OR $_POST['defender_military_unit2_at_home'] > 0
+		OR $_POST['defender_military_unit3_at_home'] > 0
+		OR $_POST['defender_military_unit4_at_home'] > 0
+
+		)
 	{
-		$dominion['defender']['general']['land'] = $_POST['defender_land'];
+		$dominion['defender']['barracks_info'] = TRUE;
 	}
-}
-
-# Prepare the military.
-$dominion['defender']['military'] = $scribes['military'][$dominion['defender']['general']['race']];
-
-// Survey
-$dominion['defender']['buildings'] = parse_survey($_POST['defender_survey'], $dominion['defender']['general']['land']);
-
-// Castle
-$dominion['defender']['castle'] = parse_castle($_POST['defender_castle']);
-
-// Barracks (returning)
-$defender_barracks = parse_barracks($_POST['defender_barracks_returning'], $_POST['defender_barracks_home'], $dominion['defender']['general']['race']);
-
-$dominion['defender']['military']['unit1']['returning'] = $defender_barracks['unit1']['returning'];
-$dominion['defender']['military']['unit2']['returning'] = $defender_barracks['unit2']['returning'];
-$dominion['defender']['military']['unit3']['returning'] = $defender_barracks['unit3']['returning'];
-$dominion['defender']['military']['unit4']['returning'] = $defender_barracks['unit4']['returning'];
-
-$dominion['defender']['military']['unit1']['home'] = $defender_barracks['unit1']['home'];
-$dominion['defender']['military']['unit2']['home'] = $defender_barracks['unit2']['home'];
-$dominion['defender']['military']['unit3']['home'] = $defender_barracks['unit3']['home'];
-$dominion['defender']['military']['unit4']['home'] = $defender_barracks['unit4']['home'];
-
-$dominion['defender']['military']['unit1']['training'] = $defender_barracks['unit1']['training'];
-$dominion['defender']['military']['unit2']['training'] = $defender_barracks['unit2']['training'];
-$dominion['defender']['military']['unit3']['training'] = $defender_barracks['unit3']['training'];
-$dominion['defender']['military']['unit4']['training'] = $defender_barracks['unit4']['training'];
-
-# Do we have BS info?
-
-if(
-	$dominion['defender']['military']['unit1']['home'] > 0
-	OR $dominion['defender']['military']['unit2']['home'] > 0
-	OR $dominion['defender']['military']['unit3']['home'] > 0
-	OR $dominion['defender']['military']['unit4']['home'] > 0
-	OR $dominion['defender']['military']['unit4']['returning'] > 0
-	OR $dominion['defender']['military']['unit4']['returning'] > 0
-	OR $dominion['defender']['military']['unit4']['returning'] > 0
-	OR $dominion['defender']['military']['unit4']['returning'] > 0
-
-	OR $_POST['defender_military_unit1_returning'] > 0
-	OR $_POST['defender_military_unit2_returning'] > 0
-	OR $_POST['defender_military_unit3_returning'] > 0
-	OR $_POST['defender_military_unit4_returning'] > 0
-	OR $_POST['defender_military_unit1_at_home'] > 0
-	OR $_POST['defender_military_unit2_at_home'] > 0
-	OR $_POST['defender_military_unit3_at_home'] > 0
-	OR $_POST['defender_military_unit4_at_home'] > 0
-
-	)
-{
-	$dominion['defender']['barracks_info'] = TRUE;
 }
 
 if($_POST['origin'] == 'output')
@@ -122,14 +152,19 @@ if($_POST['origin'] == 'output')
 	$dominion['defender']['military']['unit3']['home'] = $_POST['defender_military_unit3_at_home'];
 	$dominion['defender']['military']['unit4']['home'] = $_POST['defender_military_unit4_at_home'];
 }
-else
-{
 
-	$dominion['defender']['military']['draftees']['trained'] = 	$defender_clearsight['draftees']['trained'];
-	$dominion['defender']['military']['unit1']['trained'] = $defender_clearsight['unit1']['trained'];
-	$dominion['defender']['military']['unit2']['trained'] = $defender_clearsight['unit2']['trained'];
-	$dominion['defender']['military']['unit3']['trained'] = $defender_clearsight['unit3']['trained'];
-	$dominion['defender']['military']['unit4']['trained'] = $defender_clearsight['unit4']['trained'];
+# Overwrite race and land if set manually.
+if($_POST['origin'] == 'output')
+{
+	if(isset($_POST['defender_race']))
+	{
+		$dominion['defender']['general']['race'] = $_POST['defender_race'];
+	}
+
+	if(is_numeric($_POST['defender_land']) and $_POST['defender_land'] > 0)
+	{
+		$dominion['defender']['general']['land'] = $_POST['defender_land'];
+	}
 }
 
 # Calculate raw DP
@@ -435,7 +470,7 @@ else
 	$dominion['defender']['dp']['modifier_net'] = $dominion['defender']['dp']['modifier'];
 }
 
-# Remove draftees for DE.
+# Remove draftees for DE if UG is active.
 if($dominion['attacker']['op']['mods']['spell']['name'] == 'Unholy Ghost')
 {
 	$dominion['defender']['dp']['raw'] -= $dominion['defender']['draftee_dp'];

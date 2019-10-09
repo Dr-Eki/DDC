@@ -1,6 +1,6 @@
 <?php
 
-if($_SERVER['SERVER_ADDR'] == '::1')
+if($_SERVER['SERVER_ADDR'] == 'dominion.lykanthropos.local')
 {
 	$environment = 'local';
 }
