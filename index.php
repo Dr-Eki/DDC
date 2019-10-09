@@ -21,14 +21,6 @@ require('spells.php');
 require('functions.php');
 require('functions_op_center.php');
 
-if(isset($_POST['defender_op_center']))
-{
-#  echo '<pre>';
-#  print_r(parse_op_center($_POST['defender_op_center']));
-#  echo '</pre>';
-#  die();
-}
-
 # Stylesheet
 if(!isset($_COOKIE['ddc_style']))
 {
@@ -110,7 +102,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <h1>How To Use</h1>
 <ul>
   <li>See <a href="#Ops-Samples">Ops Samples</a> below.</li>
-  <li>Paste ops in corresponding field.</li>
+  <li>Paste full Ops Center view ops in corresponding field.</li>
   <li>Click "Process Ops" to process both sets of ops (Attacker and Defender).</li>
   <li>You can make manual changes in the input fields. Click Update afterwards.</li>
   <li>"Process Ops" will overwrite any manual changes.</li>
@@ -138,7 +130,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
   echo '<a href="settings.php?reset=1">Reset Calculator</a>';
 
-#  echo "Wiz: " . $dominion['attacker']['military']['Wizards']['trained'];  echo "AM: " . $dominion['attacker']['military']['ArchMages']['trained'];
+  echo ' | ';
+
+  echo '<a href="https://github.com/Dr-Eki/DDC" target="_blank">View this project on GitHub</a></p>';
+
   echo '</p>';
 
 ?>
@@ -638,7 +633,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
 
   <h1>Attacker Ops</h1>
 
-  <h2>Ops Center</h2>
+  <h2>Op Center</h2>
   <textarea type="text" name="attacker_op_center" id="attacker_op_center" class="ops"><?php echo $_POST['attacker_op_center']; ?></textarea>
 
   <h2>Clear Sight or Status Screen (DEPRECATED)</h2>
@@ -668,7 +663,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
 <div class="Defender-Ops">
   <h1>Defender Ops</h1>
 
-  <h2>Ops Center</h2>
+  <h2>Op Center</h2>
   <textarea type="text" name="defender_op_center" id="defender_op_center" class="ops"><?php echo $_POST['defender_op_center']; ?></textarea>
 
   <h2>Clear Sight or Status Screen (DEPRECATED)</h2>
@@ -710,6 +705,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' and $dominion['attacker']['op']['net'] >
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td class="op"><h3>Op Center</h3><p>Go to Op Center view for target dominion and Select All and Copy.</p></td>
+      <td><a href="images/op_center.png" target="_new"><img src="images/op_center.png" class="ops_samples" /></a></td>
+      <td><textarea class="ops_samples"><?php echo file_get_contents('text/op_center.txt'); ?></textarea></td>
+    </tr>
     <tr>
       <td class="op"><h3>Clear Sight</h3><p>Select from and including where it says "Status Screen" until the ??? for ArchMages.</p></td>
       <td><a href="images/clear_sight.png" target="_new"><img src="images/clear_sight.png" class="ops_samples" /></a></td>

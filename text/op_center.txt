@@ -1,0 +1,190 @@
+
+OpenDominion
+Toggle navigation
+
+    Wiki
+    Scribes
+    SAMPLE SAMPLE
+
+SAMPLE
+
+SAMPLE_DOMINION
+Crimson Sound (#2)
+
+    GENERAL
+    Status
+    Advisors
+    Daily Bonus
+    DOMINION
+    Explore Land
+    Construct Buildings
+    Re-zone Land
+    Improvements
+    National Bank
+    BLACK OPS
+    Military
+    Invade
+    Magic
+    Espionage
+    COMMS
+    The Council
+    Op Center
+    Government
+    REALM
+    The Realm
+    Rankings
+    Town Crier
+
+This is the open beta of OpenDominion. As the game is still in development, not all features are present and some bugs may occur.
+Op Center
+Server: 08:41:41 Tick: 00:18:19
+
+This dominion is locked due to the round having ended. No actions can be performed and no ticks will be processed.
+
+Go to your dashboard to check if new rounds are open to play.
+SAMPLE_DOMINION Overview
+Networth:
+1,063,573
+Platinum:
+2,345
+Food:
+18,546
+Ore:
+0
+Peasants:
+26,461
+Lumber:
+0
+Mana:
+15,419
+Gems:
+0
+Status Screen (Long Time No See)
+Overview
+Ruler: 	Kakadrea
+Race: 	Undead
+Land: 	3,156 (60.9%)
+Peasants: 	9,298
+Employment: 	100.00%
+Networth: 	755,828
+Prestige: 	456
+Resources
+Platinum: 	659
+Food: 	24,734
+Lumber: 	78,497
+Mana: 	42,260
+Ore: 	0
+Gems: 	0
+Research Points: 	0
+Boats: 	0
+Military
+Morale: 	95%
+Draftees: 	405
+Skeleton: 	2,203
+Ghoul: 	2,031
+Progeny: 	43,000
+Vampire: 	35,791
+Spies: 	???
+Wizards: 	???
+ArchMages: 	???
+
+This dominion has been invaded in recent times.
+Revealed 2019-10-04 13:29:40 by Treacherous Invalid
+View Archives
+Information
+
+This page contains the data that your realmies have gathered about dominion Long Time No See from realm Small Truth (#5).
+
+Sections marked as stale contain data from the previous hour (or earlier) and should be considered inaccurate. Sections marked as invalid are more than 12 hours old. Recast your info ops before performing any offensive operations during this hour.
+Active Spells
+Spell 	Effect 	Duration 	Cast By
+Midas Touch 	+10% platinum production 	10 	Long Time No See (#5)
+Ares' Call 	+10% defensive power 	10 	Long Time No See (#5)
+Parasitic Hunger 	+50% conversion rate 	10 	Long Time No See (#5)
+Revealed 2019-10-03 17:50:08 by blame it on me Invalid
+View Archives
+Improvements
+Part 	Rating 	Invested
+Science 	+0.00% platinum production 	0
+Keep 	+29.77% max population 	20,670,050
+Towers PI 	+0.00% wizard power, -0.00% damage from spells 	0
+Forges 	+26.43% offensive power 	29,701,450
+Walls 	+24.94% defensive power 	26,583,586
+Harbor 	+0.00% food production, boat production & protection 	0
+Revealed 2019-10-04 13:30:20 by Treacherous Invalid
+View Archives
+Units in training and home
+Unit 	1 	2 	3 	4 	5 	6 	7 	8 	9 	10 	11 	12 	Home (Training)
+Draftees 	  	415
+Skeleton 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Ghoul 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	~2,260
+Progeny 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	~44,859
+Vampire 	- 	- 	- 	- 	- 	652 	- 	- 	- 	- 	- 	259 	0 (911)
+Spies 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	???
+Wizards 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	???
+Archmages 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	???
+Revealed 2019-10-04 13:29:45 by Treacherous Invalid
+View Archives
+Units returning from battle
+Unit 	1 	2 	3 	4 	5 	6 	7 	8 	9 	10 	11 	12 	Total
+Skeleton 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	2,184 	~2,184
+Ghoul 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Progeny 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	2,114 	~2,114
+Vampire 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	41,758 	~41,758
+Constructed Buildings Barren Land: 20
+Building Type 	Number 	% of land
+Home 	918 	30.17%
+Alchemy 	55 	1.81%
+Farm 	69 	2.27%
+Smithy 	452 	14.85%
+Masonry PI 	267 	8.77%
+Ore Mine 	0 	0.00%
+Gryphon Nest 	251 	8.25%
+Tower 	112 	3.68%
+Wizard Guild 	0 	0.00%
+Temple 	146 	4.80%
+Diamond Mine 	483 	15.87%
+School NYI 	0 	0.00%
+Lumberyard 	67 	2.20%
+Forest Haven PI 	0 	0.00%
+Factory 	11 	0.36%
+Guard Tower 	294 	9.66%
+Shrine 	11 	0.36%
+Barracks 	0 	0.00%
+Dock 	0 	0.00%
+Revealed 2019-10-04 13:30:08 by Treacherous Invalid
+View Archives
+Incoming building breakdown
+Building Type 	1 	2 	3 	4 	5 	6 	7 	8 	9 	10 	11 	12 	Total
+Home 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Alchemy 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Farm 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Smithy 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Masonry 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Ore Mine 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Gryphon Nest 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Tower 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Wizard Guild 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Temple 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Diamond Mine 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+School 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Lumberyard 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Forest Haven 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Factory 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Guard Tower 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Shrine 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Barracks 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Dock 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	- 	0
+Explored Land
+
+No recent data available.
+
+Perform espionage operation 'Land Spy' to reveal information.
+View Archives
+Incoming land breakdown
+
+No recent data available.
+
+Perform espionage operation 'Land Spy' to reveal information.
+Version: 0.7.0-10
+View this project on GitHub
